@@ -9,7 +9,8 @@ export default {
     name: "ProjectsView",
     data() {
         return {
-            projects: []
+            projects: [],
+            tasks: []
         };
     },
 
@@ -17,17 +18,21 @@ export default {
         projectsToDisplay() {
             return this.projects.map(item => { 
                 return {
+                    to: "/project/" + item.id,
                     id: item.id,
-                    header: item.project
+                    header: item.project,
+                    rightContent: this.tasks.filter(task => task.projectid === item.id && task.completed).length + "/" + this.tasks.filter(task => task.projectid === item.id).length 
                 }
             })
         }
     },
 
     created() {
+        db.get("js4tasks").then(data => {
+            this.tasks = data;
+        })
         db.get("js4projects").then(data => {
             this.projects = data;
-            console.log(this.projects);
         });
     },
     components: { BaseList }

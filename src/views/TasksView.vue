@@ -19,8 +19,11 @@ export default {
         tasksToDisplay() {
             return this.tasks.map(item => { 
                 return {
+                    to: "/task/" + item.id,
                     id: item.id,
-                    header: item.task
+                    header: item.task,
+                    subtitle: item.project,
+                    rightContent: item.completed
                 }
             })
         }
