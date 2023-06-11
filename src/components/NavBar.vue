@@ -39,7 +39,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(20, 59, 233);
+  background-color: var(--primary);
 }
 
 a{

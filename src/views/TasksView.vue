@@ -38,3 +38,4 @@ export default {
     components: { BaseList }
 }
 </script>
+
